@@ -10,10 +10,8 @@ ssl._create_default_https_context = ssl._create_stdlib_context
 
 customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 customtkinter.set_default_color_theme("dark-blue")  # Themes: "blue" (standard), "green", "dark-blue"
-try:
-    f = open("log.txt", "r+")
-except IOError:
-    f = open("log.txt", "w+")
+
+f = open("log.txt", "r")
 destination = f.read()
 f.close()
 
@@ -56,7 +54,6 @@ class App(customtkinter.CTk):
         self.entry = customtkinter.CTkEntry(self, placeholder_text="Youtube Video URL")
 
         self.entry.grid(row=0, column=1, columnspan=2, padx=(20, 0), pady=(20, 20), sticky="nsew")
-        print(self.entry.get())
         self.main_button_1 = customtkinter.CTkButton(master=self, fg_color="transparent", border_width=2,
                                                      text="Download", text_color=("gray10", "#DCE4EE"),
                                                      command=self.download)
